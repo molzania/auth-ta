@@ -6,21 +6,6 @@ const port = 8000;
 const app = express();
 app.use(bodyParser.json());
 
-const books = [
-  {
-    author: "JK Rowling",
-    books: "Harry Potter",
-  },
-  {
-    author: "Tolkien",
-    books: "Lord of the Rings",
-  },
-  {
-    author: "Stephanie Meyer",
-    books: "Twilight",
-  },
-];
-
 const users = [
   {
       username: 'terra',
@@ -82,7 +67,7 @@ app.get("/", authenticateJWT, (req, res) => {
   const { role } = req.user;
   console.log("req", req.user);
   if (role === "admin") {
-    res.json(books);
+    res.json(users);
   } else {
     res.sendStatus(403);
   }
